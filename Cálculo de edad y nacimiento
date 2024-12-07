@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Edad y Año de Nacimiento</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em;
+            text-align: center;
+            color: #FF6600; /* Naranja */
+        }
+        h2 {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #FF6600; /* Naranja */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background: #CC5200; /* Naranja más oscuro */
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.9em;
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Edad y Año de Nacimiento</h1>
+        
+        <!-- Sección para calcular el año de nacimiento -->
+        <h2>Calcular Año de Nacimiento</h2>
+        <p>Introduce tu edad y el año actual:</p>
+        <input type="number" id="edad" placeholder="Tu edad" min="0">
+        <input type="number" id="ano_actual_1" placeholder="Año actual" value="2024">
+        <button onclick="calcularAnoNacimiento()">Calcular Año de Nacimiento</button>
+        <div class="result" id="resultado_ano"></div>
+        
+        <!-- Sección para calcular la edad -->
+        <h2>Calcular Edad</h2>
+        <p>Introduce tu año de nacimiento y el año actual:</p>
+        <input type="number" id="ano_nacimiento" placeholder="Tu año de nacimiento" min="0">
+        <input type="number" id="ano_actual_2" placeholder="Año actual" value="2024">
+        <button onclick="calcularEdad()">Calcular Edad</button>
+        <div class="result" id="resultado_edad"></div>
+    </div>
+
+    <div class="footer">
+        Creado por [Dr. Adonis Castro]
+    </div>
+
+    <script>
+        // Función para calcular el año de nacimiento
+        function calcularAnoNacimiento() {
+            const edad = parseInt(document.getElementById("edad").value);
+            const anoActual = parseInt(document.getElementById("ano_actual_1").value);
+
+            if (isNaN(edad) || isNaN(anoActual)) {
+                document.getElementById("resultado_ano").textContent = "Por favor, ingresa valores válidos.";
+                return;
+            }
+
+            const anoNacimiento = anoActual - edad;
+            document.getElementById("resultado_ano").textContent = `Tu año de nacimiento es: ${anoNacimiento}`;
+        }
+
+        // Función para calcular la edad
+        function calcularEdad() {
+            const anoNacimiento = parseInt(document.getElementById("ano_nacimiento").value);
+            const anoActual = parseInt(document.getElementById("ano_actual_2").value);
+
+            if (isNaN(anoNacimiento) || isNaN(anoActual)) {
+                document.getElementById("resultado_edad").textContent = "Por favor, ingresa valores válidos.";
+                return;
+            }
+
+            const edad = anoActual - anoNacimiento;
+            document.getElementById("resultado_edad").textContent = `Tu edad es: ${edad}`;
+        }
+    </script>
+</body>
+</html>
